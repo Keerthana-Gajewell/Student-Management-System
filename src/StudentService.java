@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentService {
-    private ArrayList<Student> students = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
+    private final ArrayList<Student>students = new ArrayList<>();
+    private static final Scanner sc = new Scanner(System.in);
 
     public void addStudent() {
         System.out.print("Enter ID: ");
@@ -26,37 +26,35 @@ public class StudentService {
     }
 
    public void viewStudent(){
-    if(Student.isEmpty){
-        System.out.println(" No Students records found");
-        return;
-        System.out.println(" Id | Name | Age | Course")
-        for (Student s: Student){
-            System.println(s);
+    if( !students.isEmpty()){
+        System.out.println(" Id | Name | Age | Course");
+        for (Student s: students){
+                System.out.println(s);
         }
+    } else {
+        System.out.println(" No Students records found");
     }
-   }
+    }
 
     public void updateStudent(){
         System.out.println("Student Id to update:");
         int id = sc.nextInt();
         sc.nextLine();
 
-        for(Student s: Student){
-            if(s.getid==id){
+        for(Student s: students){
+            if(s.getId()==id){
                 System.out.println("Enter New Name:");
                 s.setName(sc.nextLine());
                 System.out.println("Enter New Age:");
-                s.setName(sc.nextInt());
+                s.setAge(sc.nextInt());
                 sc.nextLine();
                 System.out.println("Enter New Course:");
                 s.setCourse(sc.nextLine());
                 System.out.println("student updated successfully!");
                 return;
             }
-            
-
-            }
         }
+        System.out.println("Student Id not found!");
     }
 
     public void deleteStudent() {
@@ -71,5 +69,10 @@ public class StudentService {
             }
         }
         System.out.println("Student not found!");
+    }
+
+    public static void main(String[] args) {
+        StudentService service = new StudentService();
+        service.addStudent();
     }
 }
