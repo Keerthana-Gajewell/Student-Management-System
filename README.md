@@ -16,8 +16,3 @@ A console-based Java application to manage student records using OOP and Collect
 - Java
 - OOP
 - ArrayList
-
-## How to Run
-javac *.java
-java Main
->>>>>>> 4d985e6 (Student-Management_System)
